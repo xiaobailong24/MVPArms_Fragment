@@ -12,17 +12,13 @@ description: MVPArms 系列 -- Fragment 的正确使用
 # 正文
 ## Activity/Fragment 生命周期
 **Activity** 和 **Fragment** 的生命周期如下：
-<div align=center>
+
 ![Fragment的生命周期](https://developer.android.com/images/fragment_lifecycle.png?hl=zh-cn)
-</div>
 
-<div align=center>
 ![Activity生命周期对片段生命周期的影响](https://developer.android.com/images/activity_fragment_lifecycle.png?hl=zh-cn)
-</div>
 
-<div align=center>
 ![Github 神图](https://github.com/xxv/android-lifecycle/blob/master/complete_android_fragment_lifecycle.png)
-</div>
+
 
 ## MVPArms 对 Application/Activity/Fragment 的封装
 **MVPArms** 框架对 **Activity** 和 **Fragment** 的生命周期进行了很好的封装。
@@ -97,7 +93,7 @@ MainActivity 控制 Fragment 的切换，其中 HomeFragment 是主页。
 #### 为 Activity 动态添加 Fragment
 MainActivity 的布局文件包含了一个 FramLayout，用来动态添加 Fragment；还包含了一个 BottomNavigationView，在 Activity 中控制 Fragment 的切换。
 - [activity_main.xml](https://github.com/xiaobailong24/MVPArms_Fragment/blob/fragment/fragment/src/main/res/layout/activity_main.xml)
-- - [MainActivity](https://github.com/xiaobailong24/MVPArms_Fragment/blob/fragment/fragment/src/main/java/me/xiaobailong24/mvparmsfragment/mvp/ui/activity/MainActivity.java)
+- [MainActivity](https://github.com/xiaobailong24/MVPArms_Fragment/blob/fragment/fragment/src/main/java/me/xiaobailong24/mvparmsfragment/mvp/ui/activity/MainActivity.java)
 
 MainActivity 中有一个 List 用来存储 Fragment，根据每个 Fragment 在 List 中的索引切换 Fragment。此处的切换方式使用的是 hide/show 的方式，当 Fragment 需要频繁切换的时候，这样做比 replace 的方式更有效率。
 
