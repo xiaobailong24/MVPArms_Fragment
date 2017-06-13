@@ -27,15 +27,15 @@ description: MVPArms 系列 -- Fragment 的正确使用
 并将 ActivityLifecycle 注入到 **BaseApplication** 中，注入过程是通过 **AppDelegate** 来代理 **Application** 的生命周期完成的。
 为此作者还专门通过 [一篇文章](http://www.jianshu.com/p/75a5c24174b2) 介绍思想，收获颇多。
 
-> [ActivityDelegate](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/base/delegate/ActivityDelegate.java)
+- [ActivityDelegate](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/base/delegate/ActivityDelegate.java)
 
-> [FragmentDelegate](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/base/delegate/FragmentDelegate.java)
+- [FragmentDelegate](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/base/delegate/FragmentDelegate.java)
 
-> [ActivityLifecycle](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/integration/ActivityLifecycle.java)
+- [ActivityLifecycle](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/integration/ActivityLifecycle.java)
 
-> [BaseApplication](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/base/BaseApplication.java)
+- [BaseApplication](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/base/BaseApplication.java)
 
-> [AppDelegate](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/base/delegate/AppDelegate.java)
+- [AppDelegate](https://github.com/JessYanCoding/MVPArms/blob/master/arms/src/main/java/com/jess/arms/base/delegate/AppDelegate.java)
 
 [Application.ActivityLifecycleCallbacks](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks.html) 接口定义如下：
 ```java
