@@ -130,6 +130,18 @@ MainActivity 中有一个 List 用来存储 Fragment，根据每个 Fragment 在
 ```
 - [MainActivity](https://github.com/xiaobailong24/MVPArms_Fragment/blob/fragment/fragment/src/main/java/me/xiaobailong24/mvparmsfragment/mvp/ui/activity/MainActivity.java)
 
+#### Fragment 状态刷新
+由于同一个 Activity 与三个 Fragment 的生命周期同步，所以当 Activity 在 onResume 状态下，三个 Fragment 也在同时 onResume，使用 hide/show 的方式切换 Fragment 无法刷新 Fragment 的状态。这时候 **onHiddenChanged(boolean hidden)** 方法就派上用场了，可以在 Fragment 中重写此方法来处理刷新等逻辑。
+```java
+  @Override
+  public void onHiddenChanged(boolean hidden) {
+      super.onHiddenChanged(hidden);
+      if (!hidden) {
+          //refresh
+      }
+  }
+```
+
 ## 处理配置变化
 ### 场景描述
 当设备旋转或者 Activity 长期处于后台而被系统回收，Activity 的会经历销毁->重建的过程。但是我们可以保存 Fragment，当 Activity 重建时继续使用已经存在的 Fragment 实例，避免浪费系统资源。
