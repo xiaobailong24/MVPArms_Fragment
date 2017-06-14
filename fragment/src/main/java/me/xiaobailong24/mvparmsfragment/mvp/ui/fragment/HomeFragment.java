@@ -56,6 +56,13 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            //refresh
+        }
+    }
 
     @OnClick({R.id.navi_dashboard, R.id.navi_notifications})
     public void onViewClicked(View view) {
