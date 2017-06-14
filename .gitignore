@@ -41,3 +41,6 @@ captures/
 
 # MacOS
 .DS_Store
+
+# app
+app/

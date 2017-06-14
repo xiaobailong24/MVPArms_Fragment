@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: MVPArms 系列 -- Fragment 的正确使用
 date: 2017-06-06 17:00:00
@@ -5,6 +6,14 @@ tags: [Android, MVPArms, Fragment]
 categories: Android Blog
 description: MVPArms 系列 -- Fragment 的正确使用
 ---
+=======
+# MVPArms 
+[ ![Bintray](https://img.shields.io/badge/bintray-v2.1.0-brightgreen.svg) ](https://bintray.com/jessyancoding/maven/MVPArms/2.1.0/link)
+[ ![Build Status](https://travis-ci.org/JessYanCoding/MVPArms.svg?branch=master) ](https://travis-ci.org/JessYanCoding/MVPArms)
+[ ![API](https://img.shields.io/badge/API-15%2B-blue.svg?style=flat-square) ](https://developer.android.com/about/versions/android-4.0.3.html)
+[ ![License](http://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ](http://www.apache.org/licenses/LICENSE-2.0)
+[ ![QQGroup](https://img.shields.io/badge/QQ群-301733278-ff69b4.svg) ](https://shang.qq.com/wpa/qunwpa?idkey=1a5dc5e9b2e40a780522f46877ba243eeb64405d42398643d544d3eec6624917)
+>>>>>>> master
 
 # 前言
 使用 [MVPArms](https://github.com/JessYanCoding/MVPArms) 开发也有一段时间了，首先感谢 [作者](https://github.com/JessYanCoding) 的无私奉献和分享！在此记录一下 **Fragment** 使用过程中遇到的问题和解决方案。
@@ -236,8 +245,19 @@ MainActivity 中有一个 List 用来存储 Fragment，根据每个 Fragment 在
 ## Fragment 与 Activity 通信
 使用 ARouter 将 通信数据携带发送给 Activity，然后在 Activity 的 **onNewIntent(Intent intent)** 接收处理。
 
+<<<<<<< HEAD
 ## Fragment 之间的通信
 Fragment 之间的通信可以通过 Fragment 先与 Activity 通信，然后由 Activity 传递给目标 Fragment。例如上面的通过按钮切换 Fragment 就是一个例子。通过 ARouter 来实现。
+=======
+## Update
+* Tuesday, 13 June 2017: [**ProgressManager**](https://github.com/JessYanCoding/ProgressManager)
+* Wednesday, 31 May 2017: [**Template**](https://github.com/JessYanCoding/MVPArmsTemplate)
+* Monday, 24 April 2017: [**AppDelegate**](https://github.com/JessYanCoding/MVPArms/wiki#3.12)
+* Thursday, 13 April 2017: [**RepositoryManager**](https://github.com/JessYanCoding/MVPArms/wiki#2.3)
+* Thursday, 15 December 2016: [**AppManager**](https://github.com/JessYanCoding/MVPArms/wiki#3.11)
+* Sunday, 25 December 2016: [**GlobeConfigModule**](https://github.com/JessYanCoding/MVPArms/wiki#3.1)
+* Monday, 26 December 2016: [**Version Update**](https://github.com/JessYanCoding/MVPArms/wiki#1.6)
+>>>>>>> master
 
 
 # Github

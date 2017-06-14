@@ -1,11 +1,11 @@
-# MVPArms 
-[ ![Bintray](https://img.shields.io/badge/bintray-v2.0.3-brightgreen.svg) ](https://bintray.com/jessyancoding/maven/MVPArms/2.0.3/link)
+# MVPArms
+[ ![Bintray](https://img.shields.io/badge/bintray-v2.1.0-brightgreen.svg) ](https://bintray.com/jessyancoding/maven/MVPArms/2.1.0/link)
 [ ![Build Status](https://travis-ci.org/JessYanCoding/MVPArms.svg?branch=master) ](https://travis-ci.org/JessYanCoding/MVPArms)
 [ ![API](https://img.shields.io/badge/API-15%2B-blue.svg?style=flat-square) ](https://developer.android.com/about/versions/android-4.0.3.html)
 [ ![License](http://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ](http://www.apache.org/licenses/LICENSE-2.0)
 [ ![QQGroup](https://img.shields.io/badge/QQ群-301733278-ff69b4.svg) ](https://shang.qq.com/wpa/qunwpa?idkey=1a5dc5e9b2e40a780522f46877ba243eeb64405d42398643d544d3eec6624917)
 
-## A common Architecture for Android Applications developing based on MVP，integrates many Open Source Projects( like Dagger2,Rxjava,Retrofit... ),to make your developing quicker and easier. 
+## A common Architecture for Android Applications developing based on MVP，integrates many Open Source Projects( like Dagger2,Rxjava,Retrofit... ),to make your developing quicker and easier.
 
 [中文说明](MVPArms.md)
 
@@ -64,6 +64,7 @@
 
 
 ## Update
+* Tuesday, 13 June 2017: [**ProgressManager**](https://github.com/JessYanCoding/ProgressManager)
 * Wednesday, 31 May 2017: [**Template**](https://github.com/JessYanCoding/MVPArmsTemplate)
 * Monday, 24 April 2017: [**AppDelegate**](https://github.com/JessYanCoding/MVPArms/wiki#3.12)
 * Thursday, 13 April 2017: [**RepositoryManager**](https://github.com/JessYanCoding/MVPArms/wiki#2.3)
@@ -71,24 +72,24 @@
 * Sunday, 25 December 2016: [**GlobeConfigModule**](https://github.com/JessYanCoding/MVPArms/wiki#3.1)
 * Monday, 26 December 2016: [**Version Update**](https://github.com/JessYanCoding/MVPArms/wiki#1.6)
 
-## Acknowledgements 
+## Acknowledgements
 Thanks to all the three libraries used in this framework **Author**, and all for the 'Open Sourece' selfless contributions **Developer** and **Organizations**, so that we can better work and study, I will also spare time return to the open source community
 
 ## About Me
-* **Email**: <jess.yan.effort@gmail.com>  
+* **Email**: <jess.yan.effort@gmail.com>
 * **Home**: <http://jessyan.me>
 * **掘金**: <https://gold.xitu.io/user/57a9dbd9165abd0061714613>
 * **简书**: <http://www.jianshu.com/u/1d0c0bc634db>
 
 ## License
-``` 
- Copyright 2016, jessyan       
-  
+```
+ Copyright 2016, jessyan
+
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at 
- 
-       http://www.apache.org/licenses/LICENSE-2.0 
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
