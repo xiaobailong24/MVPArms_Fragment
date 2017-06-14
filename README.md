@@ -17,7 +17,7 @@ description: MVPArms 系列 -- Fragment 的正确使用
 
 ![Activity生命周期对片段生命周期的影响](https://developer.android.com/images/activity_fragment_lifecycle.png?hl=zh-cn)
 
-![Github 神图](https://github.com/xxv/android-lifecycle/blob/master/complete_android_fragment_lifecycle.png)
+![Github神图](https://github.com/xxv/android-lifecycle/raw/master/complete_android_fragment_lifecycle.png)
 
 
 ## MVPArms 对 Application/Activity/Fragment 的封装
