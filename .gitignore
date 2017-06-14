@@ -43,4 +43,4 @@ captures/
 .DS_Store
 
 # app
-app/
+/app/
