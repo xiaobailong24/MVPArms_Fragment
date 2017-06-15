@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jess.arms.base.BaseActivity;
-import com.jess.arms.base.BaseFragment;
+import com.jess.arms.base.delegate.IFragment;
 import com.jess.arms.di.component.AppComponent;
 
 import java.util.ArrayList;
@@ -154,7 +154,7 @@ public class MainActivity extends BaseActivity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             Message message = new Message();
-            BaseFragment fragment = (BaseFragment) mFragments.get(mReplace);
+            IFragment fragment = (IFragment) mFragments.get(mReplace);
             switch (mReplace) {
                 case 0:
                     message.what = EventBusTags.SETTING_FRAGMENT_HOME;

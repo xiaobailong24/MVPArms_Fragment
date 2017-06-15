@@ -71,7 +71,8 @@ description: MVPArms 系列 -- Fragment 的正确使用
   }
 ```
 
-> 注意：ActivityLifecycleCallbacks 和 FragmentLifecycleCallbacks 里的方法是在 Activity 和 Fragment 对应生命周期的 super() 方法中进行的。即执行 super() 之后，先执行对应的 LifecycleCallbacks 里的方法，再执行 super() 之后的语句。
+> 注意：ActivityLifecycleCallbacks 里的方法是在 Activity 对应生命周期的 super() 方法中进行的。
+> FragmentLifecycleCallbacks 里的方法是在 Fragment 对应生命周期方法全部执行完毕后后调用的。
 
 
 ## Activity 控制 Fragment 的切换
@@ -83,7 +84,7 @@ MainActivity 控制 Fragment 的切换，其中 HomeFragment 是主页。
 #### 设置 Activity 启动模式
 设置 MainActivity 的启动模式为 **singleTask**，在 **AndroidManifest.xml** 中为 MainActivity 添加以下属性：
 ```java
- android:launchMode="singleInstance"
+ android:launchMode="singleTask"
 ```
 
 > singleTask: singleTask 模式的 Activity 只允许在系统中有一个实例。
@@ -197,7 +198,7 @@ MainActivity 中有一个 List 用来存储 Fragment，根据每个 Fragment 在
 在 Activity 中持有 各个 Fragment 实例，MVPArms 的 **IFragment** 接口提供一个 **setData(Object data)** 方法，可以将通信数据传递给目标 Fragment：
 ```java
   Message message = new Message();
-  BaseFragment fragment = (BaseFragment) mFragments.get(mReplace);
+  IFragment fragment = (IFragment) mFragments.get(mReplace);
   switch (mReplace) {
       case 0:
           message.what = EventBusTags.SETTING_FRAGMENT_HOME;
