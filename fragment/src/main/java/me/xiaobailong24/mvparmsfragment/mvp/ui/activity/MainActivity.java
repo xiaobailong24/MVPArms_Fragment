@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -21,10 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import me.xiaobailong24.mvparmsfragment.R;
 import me.xiaobailong24.mvparmsfragment.app.EventBusTags;
-import me.xiaobailong24.mvparmsfragment.app.utils.FragmentUtils;
-import me.xiaobailong24.mvparmsfragment.mvp.ui.fragment.DashboardFragment;
-import me.xiaobailong24.mvparmsfragment.mvp.ui.fragment.HomeFragment;
-import me.xiaobailong24.mvparmsfragment.mvp.ui.fragment.NotificationsFragment;
+import me.xiaobailong24.mvparmsfragment.mvp.ui.adapter.FragmentAdapter;
 import timber.log.Timber;
 
 import static me.xiaobailong24.mvparmsfragment.app.EventBusTags.ACTIVITY_FRAGMENT_REPLACE;
@@ -44,7 +39,7 @@ public class MainActivity extends BaseActivity {
     BottomNavigationView mNavigation;
 
     private List<Integer> mTitles;
-    private List<Fragment> mFragments;
+    private FragmentAdapter mFragmentAdapter;
     private List<Integer> mNavIds;
     private int mReplace = 0;
 
@@ -62,7 +57,10 @@ public class MainActivity extends BaseActivity {
                 break;
         }
         mToolbarTitle.setText(mTitles.get(mReplace));
-        FragmentUtils.hideAllShowFragment(mFragments.get(mReplace));
+        getSupportFragmentManager()
+                .beginTransaction().
+                replace(R.id.main_frame, mFragmentAdapter.getItem(mReplace))
+                .commit();
         return true;
     };
 
@@ -93,31 +91,12 @@ public class MainActivity extends BaseActivity {
             mNavIds.add(R.id.navigation_dashboard);
             mNavIds.add(R.id.navigation_notifications);
         }
-        //处理Activity的重建（recreate），恢复Fragment
-        HomeFragment homeFragment;
-        DashboardFragment dashboardFragment;
-        NotificationsFragment notificationsFragment;
-        if (savedInstanceState == null) {
-            homeFragment = HomeFragment.newInstance();
-            dashboardFragment = DashboardFragment.newInstance();
-            notificationsFragment = NotificationsFragment.newInstance();
-        } else {
-            mReplace = savedInstanceState.getInt(ACTIVITY_FRAGMENT_REPLACE);
-            FragmentManager fm = getSupportFragmentManager();
-            homeFragment =
-                    (HomeFragment) FragmentUtils.findFragment(fm, HomeFragment.class);
-            dashboardFragment =
-                    (DashboardFragment) FragmentUtils.findFragment(fm, DashboardFragment.class);
-            notificationsFragment =
-                    (NotificationsFragment) FragmentUtils.findFragment(fm, NotificationsFragment.class);
-        }
-        if (mFragments == null) {
-            mFragments = new ArrayList<>();
-            mFragments.add(homeFragment);
-            mFragments.add(dashboardFragment);
-            mFragments.add(notificationsFragment);
-        }
-        FragmentUtils.addFragments(getSupportFragmentManager(), mFragments, R.id.main_frame, 0);
+        mFragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
+        for (int i = 0; i < mFragmentAdapter.getCount(); i++)
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.main_frame, mFragmentAdapter.getItem(i))
+                    .commit();
         mNavigation.setSelectedItemId(mNavIds.get(mReplace));
     }
 
@@ -154,7 +133,7 @@ public class MainActivity extends BaseActivity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             Message message = new Message();
-            IFragment fragment = (IFragment) mFragments.get(mReplace);
+            IFragment fragment = (IFragment) mFragmentAdapter.getItem(mReplace);
             switch (mReplace) {
                 case 0:
                     message.what = EventBusTags.SETTING_FRAGMENT_HOME;
@@ -187,7 +166,7 @@ public class MainActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         this.mTitles = null;
-        this.mFragments = null;
+        this.mFragmentAdapter = null;
         this.mNavIds = null;
     }
 }
