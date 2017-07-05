@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".mvp.ui.activity.MainActivity"
+        <activity
+            android:name=".mvp.ui.activity.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -38,6 +39,8 @@
         <meta-data
             android:name="me.xiaobailong24.mvparmsfragment.app.GlobalConfiguration"
             android:value="ConfigModule"/>
+
+        <activity android:name=".mvp.ui.activity.TestActivity"/>
 
     </application>
 

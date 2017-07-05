@@ -64,7 +64,7 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.navi_dashboard, R.id.navi_notifications})
+    @OnClick({R.id.navi_dashboard, R.id.navi_notifications, R.id.test})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.navi_dashboard:
@@ -77,6 +77,11 @@ public class HomeFragment extends BaseFragment {
                 ARouter.getInstance()
                         .build(EventBusTags.AROUTER_PATH_MAIN)
                         .withInt(EventBusTags.ACTIVITY_FRAGMENT_REPLACE, EventBusTags.MAIN_FRAGMENT_NOTIFICATIONS)
+                        .navigation();
+                break;
+            case R.id.test:
+                ARouter.getInstance()
+                        .build(EventBusTags.AROUTER_PATH_TEST)
                         .navigation();
                 break;
         }

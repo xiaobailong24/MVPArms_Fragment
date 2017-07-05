@@ -32,7 +32,7 @@ import static me.xiaobailong24.mvparmsfragment.app.EventBusTags.ACTIVITY_FRAGMEN
 /**
  * Created by xiaobailong24 on 2017/6/12.
  * MVP MainActivity
- * Activity 控制 Fragment 界面逻辑
+ * Activity 控制 Fragment 界面逻辑（动态加载）
  */
 
 @Route(path = EventBusTags.AROUTER_PATH_MAIN)
