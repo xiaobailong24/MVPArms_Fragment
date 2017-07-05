@@ -34,7 +34,7 @@ public class TestActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        mToolbarTitle.setText(R.string.activity_test);
+        mToolbarTitle.setText(R.string.title_activity_test);
     }
 
 }
