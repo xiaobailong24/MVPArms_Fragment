@@ -1,11 +1,11 @@
-# MVPArms
+# MVPArms 
 [ ![Bintray](https://img.shields.io/badge/bintray-v2.1.0-brightgreen.svg) ](https://bintray.com/jessyancoding/maven/MVPArms/2.1.0/link)
 [ ![Build Status](https://travis-ci.org/JessYanCoding/MVPArms.svg?branch=master) ](https://travis-ci.org/JessYanCoding/MVPArms)
 [ ![API](https://img.shields.io/badge/API-15%2B-blue.svg?style=flat-square) ](https://developer.android.com/about/versions/android-4.0.3.html)
 [ ![License](http://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ](http://www.apache.org/licenses/LICENSE-2.0)
 [ ![QQGroup](https://img.shields.io/badge/QQ群-301733278-ff69b4.svg) ](https://shang.qq.com/wpa/qunwpa?idkey=1a5dc5e9b2e40a780522f46877ba243eeb64405d42398643d544d3eec6624917)
 
-## A common Architecture for Android Applications developing based on MVP，integrates many Open Source Projects( like Dagger2,Rxjava,Retrofit... ),to make your developing quicker and easier.
+## A common Architecture for Android Applications developing based on MVP，integrates many Open Source Projects( like Dagger2,Rxjava,Retrofit... ),to make your developing quicker and easier. 
 
 [中文说明](MVPArms.md)
 
@@ -61,7 +61,15 @@
 16. [`Glide`](https://github.com/bumptech/glide)
 17. [`LeakCanary`](https://github.com/square/leakcanary)
 
+## Who is using MVPArms?
 
+**小顶家装 工长端** | **小顶家装 工人端** | **小顶家装 材料端** | **小顶网** | **智播** |
+:-------------------------------------------------------------------:|:----------:|:---------------:|:--------:|:--------------:|
+[<img src="image/xiaoding_foreman_logo.png" width="80" height="80">](http://www.dggxdjz.com) | [<img src="image/xiaoding_worker_logo.png" width="80" height="80">](http://www.dggxdjz.com) | [<img src="image/xiaoding_material_logo.png" width="80" height="80">](http://www.dggxdjz.com) | [<img src="image/top_net_work_logo.png" width="80" height="80">](http://www.dgg.net/appload.htm) | [<img src="image/zhibo_logo.png" width="80" height="80">](http://www.zhibocloud.cn/)| 
+**天天视频** | **天天直播** | **中斗通航** | **中斗祥云** | **麋鹿旅行** |
+[<img src="image/tiantian_video_logo.png" width="80" height="80">](http://sj.qq.com/myapp/detail.htm?apkName=com.dzwh.ttys) | [<img src="image/tiantian_live_logo.png" width="80" height="80">](http://www.25pp.com/android/detail_7611392/) | [<img src="image/tong_hang_logo.png" width="80" height="80">](https://fir.im/3176) | <img src="image/xiang_yun_logo.png" width="80" height="80">  | [<img src="image/mi_lu_logo.png" width="80" height="80">](http://android.myapp.com/myapp/detail.htm?apkName=com.elk.tourist) | 
+**汇财富** | **觅窝** | **(Internal App ...)** | **(In Progress App ...)** | **(Your App ...)** |
+[<img src="image/hui_cai_fu_logo.png" width="80" height="80">](http://android.myapp.com/myapp/detail.htm?apkName=com.tahone.client) | [<img src="image/mi_wo_logo.png" width="80" height="80">](http://miwo.ai/) | <img src="image/android_logo.png" width="80" height="80">  | <img src="image/android_logo.png" width="80" height="80"> | <img src="image/android_logo.png" width="80" height="80">|  
 
 ## Update
 * Tuesday, 13 June 2017: [**ProgressManager**](https://github.com/JessYanCoding/ProgressManager)
@@ -72,24 +80,24 @@
 * Sunday, 25 December 2016: [**GlobeConfigModule**](https://github.com/JessYanCoding/MVPArms/wiki#3.1)
 * Monday, 26 December 2016: [**Version Update**](https://github.com/JessYanCoding/MVPArms/wiki#1.6)
 
-## Acknowledgements
+## Acknowledgements 
 Thanks to all the three libraries used in this framework **Author**, and all for the 'Open Sourece' selfless contributions **Developer** and **Organizations**, so that we can better work and study, I will also spare time return to the open source community
 
 ## About Me
-* **Email**: <jess.yan.effort@gmail.com>
+* **Email**: <jess.yan.effort@gmail.com>  
 * **Home**: <http://jessyan.me>
 * **掘金**: <https://gold.xitu.io/user/57a9dbd9165abd0061714613>
 * **简书**: <http://www.jianshu.com/u/1d0c0bc634db>
 
 ## License
-```
- Copyright 2016, jessyan
-
+``` 
+ Copyright 2016, jessyan       
+  
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
+   You may obtain a copy of the License at 
+ 
+       http://www.apache.org/licenses/LICENSE-2.0 
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
