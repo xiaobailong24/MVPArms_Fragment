@@ -206,15 +206,6 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
             FragmentDelegate fragmentDelegate = fetchFragmentDelegate(f);
             if (fragmentDelegate != null) {
                 fragmentDelegate.onActivityCreate(savedInstanceState);
-            } else {
-                //如果使用 <fragment> 标签静态引用的方式加载 Fragment，
-                //onFragmentAttached、onFragmentCreated、onFragmentViewCreated 不会执行。
-                fragmentDelegate = new FragmentDelegateImpl(fm, f);
-                f.getArguments().putParcelable(FragmentDelegate.FRAGMENT_DELEGATE, fragmentDelegate);
-                fragmentDelegate.onAttach(f.getContext());
-                fragmentDelegate.onCreate(savedInstanceState);
-                fragmentDelegate.onCreateView(f.getView(), savedInstanceState);
-                fragmentDelegate.onActivityCreate(savedInstanceState);
             }
         }
 
