@@ -252,6 +252,28 @@ MainActivity 中有一个 List 用来存储 Fragment，根据每个 Fragment 在
 ## Fragment 之间的通信
 Fragment 之间的通信可以通过 Fragment 先与 Activity 通信，然后由 Activity 传递给目标 Fragment。例如上面的通过按钮切换 Fragment 就是一个例子。通过 ARouter 来实现。
 
+## <fragment> 静态加载
+Activity 也可以在布局文件里直接使用 **<fragment>** 标签来静态加载 Fragment。
+<fragment> 中的 **android:name** 属性指定要在布局中实例化的 Fragment 类。
+当系统创建此 Activity 布局时，会实例化在布局中指定的每个片段，并为每个片段调用 **onCreateView()** 方法，以检索每个片段的布局。系统会直接插入片段返回的 View 来替代 <fragment> 元素。
+用法如下：
+```xml
+  <fragment
+      android:id="@+id/home"
+      android:name="me.xiaobailong24.mvparmsfragment.mvp.ui.fragment.HomeFragment"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:tag="HomeFragment"/>
+```
+
+- [activity_test.xml](https://github.com/xiaobailong24/MVPArms_Fragment/blob/fragment/fragment/src/main/res/layout/activity_test.xml)
+- [TestActivity](https://github.com/xiaobailong24/MVPArms_Fragment/blob/fragment/fragment/src/main/java/me/xiaobailong24/mvparmsfragment/mvp/ui/activity/TestActivity.java)
+
+> 注意：每个片段都需要一个唯一的标识符，重启 Activity 时，系统可以使用该标识符来恢复片段（您也可以使用该标识符来捕获片段以执行某些事务，如将其移除）。 可以通过三种方式为片段提供 ID：
+> - 为 android:id 属性提供唯一 ID。
+> - 为 android:tag 属性提供唯一字符串。
+> - 如果您未给以上两个属性提供值，系统会使用容器视图的 ID。（不推荐，最好 id 和 tag 至少设置一项。）
+
 
 # Github
 欢迎 star 和 issue：
