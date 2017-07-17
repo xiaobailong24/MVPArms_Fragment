@@ -16,7 +16,6 @@ import com.jess.arms.base.App;
 import com.jess.arms.base.delegate.AppDelegate;
 import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.integration.ConfigModule;
-import com.jess.arms.integration.IRepositoryManager;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -39,15 +38,16 @@ public class GlobalConfiguration implements ConfigModule {
 
     }
 
-    @Override
-    public void registerComponents(Context context, IRepositoryManager repositoryManager) {
-
-    }
 
     @Override
     public void injectAppLifecycle(Context context, List<AppDelegate.Lifecycle> lifecycles) {
         // AppDelegate.Lifecycle 的所有方法都会在基类Application对应的生命周期中被调用,所以在对应的方法中可以扩展一些自己需要的逻辑
         lifecycles.add(new AppDelegate.Lifecycle() {
+
+            @Override
+            public void attachBaseContext(Context base) {
+
+            }
 
             @Override
             public void onCreate(Application application) {
@@ -84,29 +84,30 @@ public class GlobalConfiguration implements ConfigModule {
             @Override
             public void onActivityStarted(Activity activity) {
                 Timber.w(activity + " - onActivityStarted");
-                //这里全局给Activity设置toolbar和title,你想象力有多丰富,这里就有多强大,以前放到BaseActivity的操作都可以放到这里
-                boolean init;
-                if (activity instanceof AppCompatActivity)
-                    init = ((AppCompatActivity) activity).getSupportActionBar() == null
-                            && activity.findViewById(R.id.toolbar) != null;
-                else
-                    init = activity.getActionBar() == null
-                            && activity.findViewById(R.id.toolbar) != null;
-
-                if (init) {
-                    if (activity instanceof AppCompatActivity && ((AppCompatActivity) activity).getSupportActionBar() == null) {
-                        ((AppCompatActivity) activity).setSupportActionBar((Toolbar) activity.findViewById(R.id.toolbar));
-                        ((AppCompatActivity) activity).getSupportActionBar().setDisplayShowTitleEnabled(false);
-                    } else if (!(activity instanceof AppCompatActivity) && activity.getActionBar() == null) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            activity.setActionBar((android.widget.Toolbar) activity.findViewById(R.id.toolbar));
-                            activity.getActionBar().setDisplayShowTitleEnabled(false);
+                if (!activity.getIntent().getBooleanExtra("isInitToolbar", false)) {
+                    //由于加强框架的兼容性,故将 setContentView 放到 onActivityCreated 之后,onActivityStarted 之前执行
+                    //而 findViewById 必须在 Activity setContentView() 后才有效,所以将以下代码从之前的 onActivityCreated 中移动到 onActivityStarted 中执行
+                    activity.getIntent().putExtra("isInitToolbar", true);
+                    //这里全局给Activity设置toolbar和title,你想象力有多丰富,这里就有多强大,以前放到BaseActivity的操作都可以放到这里
+                    if (activity.findViewById(R.id.toolbar) != null) {
+                        if (activity instanceof AppCompatActivity) {
+                            ((AppCompatActivity) activity).setSupportActionBar((Toolbar) activity.findViewById(R.id.toolbar));
+                            ((AppCompatActivity) activity).getSupportActionBar().setDisplayShowTitleEnabled(false);
+                        } else {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                activity.setActionBar((android.widget.Toolbar) activity.findViewById(R.id.toolbar));
+                                activity.getActionBar().setDisplayShowTitleEnabled(false);
+                            }
                         }
                     }
-                    ((TextView) activity.findViewById(R.id.toolbar_title)).setText(activity.getTitle());
-                    activity.findViewById(R.id.toolbar_back).setOnClickListener(v -> {
-                        activity.onBackPressed();
-                    });
+                    if (activity.findViewById(R.id.toolbar_title) != null) {
+                        ((TextView) activity.findViewById(R.id.toolbar_title)).setText(activity.getTitle());
+                    }
+                    if (activity.findViewById(R.id.toolbar_back) != null) {
+                        activity.findViewById(R.id.toolbar_back).setOnClickListener(v -> {
+                            activity.onBackPressed();
+                        });
+                    }
                 }
             }
 
