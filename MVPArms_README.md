@@ -1,5 +1,5 @@
 # MVPArms 
-[ ![Bintray](https://img.shields.io/badge/bintray-v2.1.0-brightgreen.svg) ](https://bintray.com/jessyancoding/maven/MVPArms/2.1.0/link)
+[ ![Bintray](https://img.shields.io/badge/bintray-v2.1.5-brightgreen.svg) ](https://bintray.com/jessyancoding/maven/MVPArms/2.1.5/link)
 [ ![Build Status](https://travis-ci.org/JessYanCoding/MVPArms.svg?branch=master) ](https://travis-ci.org/JessYanCoding/MVPArms)
 [ ![API](https://img.shields.io/badge/API-15%2B-blue.svg?style=flat-square) ](https://developer.android.com/about/versions/android-4.0.3.html)
 [ ![License](http://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ](http://www.apache.org/licenses/LICENSE-2.0)
@@ -70,6 +70,7 @@
 [<img src="image/hui_cai_fu_logo.png" width="80" height="80">](http://android.myapp.com/myapp/detail.htm?apkName=com.tahone.client) | [<img src="image/mi_wo_logo.png" width="80" height="80">](http://miwo.ai/) | <img src="image/android_logo.png" width="80" height="80">  | <img src="image/android_logo.png" width="80" height="80"> | <img src="image/android_logo.png" width="80" height="80">|  
 
 ## Update
+* Thursday, 20 July 2017: [**RetrofitUrlManager**](https://github.com/JessYanCoding/RetrofitUrlManager)
 * Tuesday, 13 June 2017: [**ProgressManager**](https://github.com/JessYanCoding/ProgressManager)
 * Wednesday, 31 May 2017: [**Template**](https://github.com/JessYanCoding/MVPArmsTemplate)
 * Monday, 24 April 2017: [**AppDelegate**](https://github.com/JessYanCoding/MVPArms/wiki#3.12)
@@ -79,7 +80,7 @@
 * Monday, 26 December 2016: [**Version Update**](https://github.com/JessYanCoding/MVPArms/wiki#1.6)
 
 ## Acknowledgements 
-Thanks to all the three libraries used in this framework **Author**, and all for the 'Open Sourece' selfless contributions **Developer** and **Organizations**, so that we can better work and study, I will also spare time return to the open source community
+Thanks to all the three libraries used in this framework **Author**, and all for the **Open Sourece** selfless contributions **Developer** and **Organizations**, so that we can better work and study, I will also spare time return to the open source community
 
 ## About Me
 * **Email**: <jess.yan.effort@gmail.com>  

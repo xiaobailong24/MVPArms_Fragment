@@ -13,8 +13,9 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.jess.arms.base.App;
-import com.jess.arms.base.delegate.AppDelegate;
+import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.GlobalConfigModule;
+import com.jess.arms.http.RequestInterceptor;
 import com.jess.arms.integration.ConfigModule;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -31,28 +32,40 @@ import timber.log.Timber;
  * Contact with jess.yan.effort@gmail.com
  */
 
+public final class GlobalConfiguration implements ConfigModule {
+    //    public static String sDomain = Api.APP_DOMAIN;
 
-public class GlobalConfiguration implements ConfigModule {
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
-
+        if (!BuildConfig.LOG_DEBUG) //Release 时,让框架不再打印 Http 请求和响应的信息
+            builder.printHttpLogLevel(RequestInterceptor.Level.NONE);
     }
 
-
     @Override
-    public void injectAppLifecycle(Context context, List<AppDelegate.Lifecycle> lifecycles) {
-        // AppDelegate.Lifecycle 的所有方法都会在基类Application对应的生命周期中被调用,所以在对应的方法中可以扩展一些自己需要的逻辑
-        lifecycles.add(new AppDelegate.Lifecycle() {
+    public void injectAppLifecycle(Context context, List<AppLifecycles> lifecycles) {
+        // AppLifecycles 的所有方法都会在基类Application对应的生命周期中被调用,所以在对应的方法中可以扩展一些自己需要的逻辑
+        lifecycles.add(new AppLifecycles() {
 
             @Override
             public void attachBaseContext(Context base) {
-
+                //                MultiDex.install(base);  //这里比 onCreate 先执行,常用于 MultiDex 初始化,插件化框架的初始化
             }
 
             @Override
             public void onCreate(Application application) {
-                if (BuildConfig.LOG_DEBUG) {//Timber日志打印
+                if (BuildConfig.LOG_DEBUG) {//Timber初始化
+                    //Timber 是一个日志框架容器,外部使用统一的Api,内部可以动态的切换成任何日志框架(打印策略)进行日志打印
+                    //并且支持添加多个日志框架(打印策略),做到外部调用一次 Api,内部却可以做到同时使用多个策略
+                    //比如添加三个策略,一个打印日志,一个将日志保存本地,一个将日志上传服务器
                     Timber.plant(new Timber.DebugTree());
+                    // 如果你想将框架切换为 Logger 来打印日志,请使用下面的代码,如想切换为其他日志框架请根据下面的方式扩展
+                    //                    Logger.addLogAdapter(new AndroidLogAdapter());
+                    //                    Timber.plant(new Timber.DebugTree() {
+                    //                        @Override
+                    //                        protected void log(int priority, String tag, String message, Throwable t) {
+                    //                            Logger.log(priority, tag, message, t);
+                    //                        }
+                    //                    });
                 }
                 //leakCanary内存泄露检查
                 ((App) application).getAppComponent().extras().put(RefWatcher.class.getName(), BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
@@ -79,7 +92,6 @@ public class GlobalConfiguration implements ConfigModule {
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
                 Timber.w(activity + " - onActivityCreated");
             }
-
 
             @Override
             public void onActivityStarted(Activity activity) {
@@ -146,13 +158,20 @@ public class GlobalConfiguration implements ConfigModule {
             public void onFragmentCreated(FragmentManager fm, Fragment f, Bundle savedInstanceState) {
                 // 在配置变化的时候将这个 Fragment 保存下来,在 Activity 由于配置变化重建是重复利用已经创建的Fragment。
                 // https://developer.android.com/reference/android/app/Fragment.html?hl=zh-cn#setRetainInstance(boolean)
+                // 如果在 XML 中使用 <Fragment/> 标签,的方式创建 Fragment 请务必在标签中加上 android:id 或者 android:tag 属性,否则 setRetainInstance(true) 无效
                 // 在 Activity 中绑定少量的 Fragment 建议这样做,如果需要绑定较多的 Fragment 不建议设置此参数,如 ViewPager 需要展示较多 Fragment
                 f.setRetainInstance(true);
             }
 
             @Override
             public void onFragmentDestroyed(FragmentManager fm, Fragment f) {
-                ((RefWatcher) ((App) f.getActivity().getApplication()).getAppComponent().extras().get(RefWatcher.class.getName())).watch(f);
+                //这里应该是检测 Fragment 而不是 FragmentLifecycleCallbacks 的泄露。
+                ((RefWatcher) ((App) f.getActivity()
+                        .getApplication())
+                        .getAppComponent()
+                        .extras()
+                        .get(RefWatcher.class.getName()))
+                        .watch(f);
             }
         });
     }

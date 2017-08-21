@@ -1,4 +1,4 @@
-package com.jess.arms.widget.imageloader;
+package com.jess.arms.http.imageloader;
 
 import android.content.Context;
 
@@ -32,4 +32,7 @@ public final class ImageLoader {
         this.mStrategy = strategy;
     }
 
+    public BaseImageLoaderStrategy getLoadImgStrategy() {
+        return mStrategy;
+    }
 }
